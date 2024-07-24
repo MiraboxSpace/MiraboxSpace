@@ -68,10 +68,8 @@ WebSocket.prototype.saveData = $.debounce(function (payload) {
     }));
 });
 
-//兼容旧接口
-const connectElgatoStreamDeckSocket = connectSocket;
 // StreamDock 软件入口函数
-async function connectSocket(port, uuid, event, app, info) {
+async function connectElgatoStreamDeckSocket(port, uuid, event, app, info) {
     info = JSON.parse(info);
     $uuid = uuid; $action = info.action; $context = info.context;
     $websocket = new WebSocket('ws://127.0.0.1:' + port);

@@ -68,8 +68,6 @@ WebSocket.prototype.saveData = $.debounce(function (payload) {
     }))
 }, 0)
 
-// StreamDock 软件入口函数
-const connectSocket = connectElgatoStreamDeckSocket;
 async function connectElgatoStreamDeckSocket(port, uuid, event, app, info) {
     info = JSON.parse(info);
     $uuid = uuid; $action = info.action; $context = info.context;

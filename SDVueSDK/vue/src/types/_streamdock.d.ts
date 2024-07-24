@@ -2,7 +2,6 @@
 
 interface Window {
   argv: StreamDock.Argv; // 入口参数
-  connectSocket(): void; //兼容Elgato接口
   connectElgatoStreamDeckSocket(): void; //兼容Elgato接口
   onFilePickerReturn(files: string): void; // 文件上传触发 => 用于获取绝对路径
 }
