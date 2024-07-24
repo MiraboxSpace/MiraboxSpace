@@ -1,0 +1,8 @@
+.vscode
+.gitignore
+dist
+node_modules
+public
+tsconfig.json
+tsconfig.*.json
+auto-imports.d.ts
