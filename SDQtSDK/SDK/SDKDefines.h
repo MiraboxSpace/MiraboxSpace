@@ -98,7 +98,7 @@
 //
 // Connection
 //
-#define mSDKConnectSocketFunction "connectSocket"
+#define mSDKConnectSocketFunction "connectElgatoStreamDeckSocket"
 #define mSDKRegisterPlugin "registerPlugin"
 #define mSDKRegisterPropertyInspector "registerPropertyInspector"
 #define mSDKPortParameter "-port"

@@ -58,7 +58,7 @@ class Plugins {
 }
 
 // 软件通信
-window.connectSocket = window.connectElgatoStreamDeckSocket = function () {
+window.connectElgatoStreamDeckSocket = function () {
     const uuid = arguments[1], event = arguments[2];
     window.info = JSON.parse(arguments[3]);
     window.socket = new WebSocket("ws://127.0.0.1:" + arguments[0]);
