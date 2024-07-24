@@ -1,0 +1,14 @@
+# 单引号
+singleQuote: true
+
+# 末尾分号
+semi: true
+
+# 超出换行
+printWidth: 180
+
+# 尾随逗号
+trailingComma: none
+
+# 缩进 vue 文件的标签
+vueIndentScriptAndStyle: true

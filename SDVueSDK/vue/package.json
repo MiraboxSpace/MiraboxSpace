@@ -1,0 +1,24 @@
+{
+  "name": "vue",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./script/autofile.cjs dev && vite",
+    "build": "vite build && node ./script/autofile.cjs",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.10",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "fs-extra": "^11.2.0",
+    "naive-ui": "^2.38.1",
+    "prettier": "^3.2.5",
+    "sass": "^1.71.1",
+    "unplugin-auto-import": "^0.17.5",
+    "vite": "^5.1.5",
+    "vite-plugin-singlefile": "^2.0.1"
+  }
+}

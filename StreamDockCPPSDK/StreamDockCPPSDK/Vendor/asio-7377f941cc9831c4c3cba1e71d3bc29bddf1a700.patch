@@ -1,0 +1,23 @@
+From 7377f941cc9831c4c3cba1e71d3bc29bddf1a700 Mon Sep 17 00:00:00 2001
+From: Christopher Kohlhoff <chris@kohlhoff.com>
+Date: Tue, 29 Dec 2020 18:32:50 +1100
+Subject: [PATCH] Add missing inline keyword in MSVC-specific workaround.
+
+Fixes duplicate symbols when building with coroutine support.
+---
+ asio/include/asio/impl/use_awaitable.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/asio/include/asio/impl/use_awaitable.hpp b/asio/include/asio/impl/use_awaitable.hpp
+index 60a6f5cd2..af7be635e 100644
+--- a/asio/include/asio/impl/use_awaitable.hpp
++++ b/asio/include/asio/impl/use_awaitable.hpp
+@@ -236,7 +236,7 @@ T dummy_return()
+ }
+ 
+ template <>
+-void dummy_return()
++inline void dummy_return()
+ {
+ }
+ #endif // defined(_MSC_VER)

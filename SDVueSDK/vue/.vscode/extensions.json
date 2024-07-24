@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "christian-kohler.path-intellisense",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "vue.volar"
+  ]
+}
