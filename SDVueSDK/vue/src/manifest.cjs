@@ -13,7 +13,7 @@
 
 const Plugin = {
   UUID: 'test',
-  version: '2.0',
+  version: '2.0.0',
   Icon: 'images/icon.png',
   i18n: {
     en: {

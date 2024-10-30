@@ -30,7 +30,7 @@
   "Description": "插件描述",
   "Category": "插件名称",
   "CategoryIcon": "static/CH.png",
-  "Version": "1.0",
+  "Version": "1.0.0",
   "URL": "http://video.hotspotek.com.cn/",
   "OS": [
     {
