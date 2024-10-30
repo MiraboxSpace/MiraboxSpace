@@ -41,7 +41,7 @@
     "Description": "Demo for Stream Dock CPP SDK",
     "Name": "State Display",
     "Icon": "images/icons/pluginIcon",
-    "Version": "1.0",
+    "Version": "1.0.0",
     "OS": [
       {
           "Platform": "mac",
