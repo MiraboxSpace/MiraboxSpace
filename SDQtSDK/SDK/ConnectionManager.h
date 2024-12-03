@@ -21,7 +21,7 @@ public:
                       QObject *parent = nullptr);
     ~ConnectionManager();
 
-    // API to communicate with the Stream Deck application
+    // API to communicate with the Stream Dock application
     void SetTitle(const QString &inTitle,
                   const QString &inContext,
                   mSDKTarget inTarget,

@@ -2,7 +2,7 @@
 /**
 @file       ESDSDKDefines.h
 
-@brief      Defines used for the Stream Deck communication
+@brief      Defines used for the Stream Dock communication
 
 @copyright  (c) 2018, Corsair Memory, Inc.
       This source code is licensed under the MIT-style license found in the

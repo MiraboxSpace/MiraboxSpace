@@ -14,7 +14,7 @@
 void HSDConnectionManager::OnOpen(WebsocketClient* inClient, websocketpp::connection_hdl inConnectionHandler) {
     HSDLogger::LogMessage("OnOpen");
 
-    // Register plugin with StreamDeck
+    // Register plugin with StreamDock
     json jsonObject;
     jsonObject["event"] = mRegisterEvent;
     jsonObject["uuid"] = mPluginUUID;

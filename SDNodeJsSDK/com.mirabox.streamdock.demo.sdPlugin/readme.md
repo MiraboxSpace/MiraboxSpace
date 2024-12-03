@@ -1,9 +1,9 @@
-# Stream Deck 中文文档 V2.8
+# Stream Dock 中文文档 V2.8
 
 仅记录常用简易API，更详细的属性还请阅读官方文档。
 
-https://developer.elgato.com/documentation/stream-deck/sdk/events-received/
-https://developer.elgato.com/documentation/stream-deck/sdk/events-sent/
+https://sdk.key123.vip/guide/events-received.html
+https://sdk.key123.vip/guide/events-sent.html
 
 ## 属性检查器HTML模板
 
