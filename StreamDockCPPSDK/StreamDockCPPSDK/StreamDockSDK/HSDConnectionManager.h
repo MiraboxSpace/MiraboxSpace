@@ -2,7 +2,7 @@
 /**
 @file       HSDConnectionManager.h
 
-@brief      Wrapper to implement the communication with the Stream Deck
+@brief      Wrapper to implement the communication with the Stream Dock
 application
 
 @copyright  (c) 2018, Corsair Memory, Inc.
@@ -37,7 +37,7 @@ class HSDConnectionManager {
   // Start the event loop
   void Run();
 
-  // API to communicate with the Stream Deck application
+  // API to communicate with the Stream Dock application
   void SetTitle(
     const std::string& inTitle,
     const std::string& inContext,
