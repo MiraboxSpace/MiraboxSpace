@@ -94,7 +94,7 @@ execFile('node', ['./index.js', port, uuid, event, language], error => {
 didReceiveSettings 操作持久化数据触发
 
 {
-  "action": "com.elgato.example.action1", 
+  "action": "com.example.action1", 
   "event": "didReceiveSettings", 
   "context": uniqueValue, 
   "device": uniqueValue, 
@@ -111,7 +111,7 @@ didReceiveSettings 操作持久化数据触发
 keyDown/keyUp/touchTap 按下时/释放按键时/触摸时触发
 
 {
-    "action": "com.elgato.example.action1",
+    "action": "com.example.action1",
     "event": "keyUp",
     "context": uniqueValue,
     "device": uniqueValue,
@@ -130,7 +130,7 @@ keyDown/keyUp/touchTap 按下时/释放按键时/触摸时触发
 willAppear/willDisappear 当一个插件创建/删除时时触发
 
 {
-    "action": "com.elgato.example.action1",
+    "action": "com.example.action1",
     "event": "willAppear",
     "context": uniqueValue,
     "device": uniqueValue,
@@ -148,7 +148,7 @@ willAppear/willDisappear 当一个插件创建/删除时时触发
 titleParametersDidChange 当用户修改标题/标题参数时触发
 
 {
-  "action": "com.elgato.example.action1", 
+  "action": "com.example.action1", 
   "event": "titleParametersDidChange", 
   "context": "uniqueValue", 
   "device": "uniqueValue", 
@@ -190,7 +190,7 @@ deviceDidConnect/deviceDidDisconnect 当设备从计算机上插入/拔出时触
 propertyInspectorDidAppear/propertyInspectorDidDisappear 当属性选择器出现/隐藏在用户界面时触发
 
 {
-  "action": "com.elgato.example.action1", 
+  "action": "com.example.action1", 
   "event": "propertyInspectorDidAppear", 
   "context": uniqueValue, 
   "device": uniqueValue
@@ -199,7 +199,7 @@ propertyInspectorDidAppear/propertyInspectorDidDisappear 当属性选择器出�
 sendToPlugin 当属性选择器使用 sendToPlugin 事件时触发
 
 {
-  "action": "com.elgato.example.action1", 
+  "action": "com.example.action1", 
   "event": "sendToPlugin", 
   "context": uniqueValue, 
   "payload": {<json data>}
@@ -208,7 +208,7 @@ sendToPlugin 当属性选择器使用 sendToPlugin 事件时触发
 dialRotate 当旋钮旋转
 
 {
-  "action": "com.elgato.example.action1", 
+  "action": "com.example.action1", 
   "event": "sendToPlugin", 
   "context": uniqueValue, 
   "payload": {<json data>}
@@ -217,7 +217,7 @@ dialRotate 当旋钮旋转
 dialDown 当旋钮按下
 
 {
-  "action": "com.elgato.example.action1", 
+  "action": "com.example.action1", 
   "event": "sendToPlugin", 
   "context": uniqueValue, 
   "payload": {<json data>}
@@ -231,7 +231,7 @@ didReceiveSettings 操作持久化数据触发
 sendToPropertyInspector 当插件使用 sendToPropertyInspector 事件时触发
 
 {
-  "action": "com.elgato.example.action1", 
+  "action": "com.example.action1", 
   "event": "sendToPropertyInspector", 
   "context": uniqueValue, 
   "payload": {<json data>}
