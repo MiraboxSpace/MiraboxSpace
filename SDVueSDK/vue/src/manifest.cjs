@@ -14,7 +14,6 @@
 const Plugin = {
   UUID: 'test',
   version: '1.0.0',
-  APIVersion: '1.0',
   Icon: 'images/icon.png',
   i18n: {
     en: {
