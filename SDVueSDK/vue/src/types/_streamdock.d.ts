@@ -2,6 +2,9 @@
 
 interface Window {
   argv: StreamDock.Argv; // 入口参数
+  connectSDSocket(): void; // 入口函数
+  connectMiraBoxSDSocket(): void; // 入口函数
+  connectSocket(): void; //兼容Elgato接口
   connectElgatoStreamDeckSocket(): void; //兼容Elgato接口
   onFilePickerReturn(files: string): void; // 文件上传触发 => 用于获取绝对路径
 }
@@ -25,6 +28,27 @@ declare namespace EventPayload {
       };
     };
     isInMultiAction: boolean;
+  };
+  type didReceiveGlobalSettings = {
+    event: string;
+    payload: {
+      settings: {};
+    };
+  };
+  type applicationDidLaunch = {
+    event: string;
+    payload: {
+      application: string
+    };
+  };
+  type applicationDidTerminate = {
+    event: string;
+    payload: {
+      application: string
+    };
+  };
+  type systemDidWakeUp = {
+    event: string;
   };
   // 按下|抬起|触摸
   type keyDownUpTouchTap = {
@@ -143,13 +167,13 @@ declare namespace EventPayload {
     device: string;
     context: string;
     payload: {
-      pressed:boolean;
+      pressed: boolean;
       coordinates: {
         column: number;
         row: number;
       };
       setting: {};
-      ticks:number;
+      ticks: number;
     }
   };
 }
@@ -201,6 +225,7 @@ declare namespace StreamDock {
   // 属性检查器事件
   type ProperMessage = {
     didReceiveSettings?(this: ProperMessage, data: EventPayload.didReceiveSettings): void;
+    didReceiveGlobalSettings?(this: ProperMessage, data: EventPayload.didReceiveGlobalSettings): void;
     sendToPropertyInspector?(this: ProperMessage, data: EventPayload.sendToPropertyInspector): void;
   };
 
@@ -228,5 +253,9 @@ declare namespace StreamDock {
     deviceDidConnect?(this: PluginMessage, data: EventPayload.deviceDidConnectDisconnect): void;
     // 设备断开 TODO: 参数未知
     deviceDidDisconnect?(this: PluginMessage, data: EventPayload.deviceDidConnectDisconnect): void;
+    didReceiveGlobalSettings?(this: PluginMessage, data: EventPayload.didReceiveGlobalSettings): void;
+    applicationDidLaunch?(this: PluginMessage, data: EventPayload.applicationDidLaunch): void;
+    applicationDidTerminate?(this: PluginMessage, data: EventPayload.applicationDidTerminate): void;
+    systemDidWakeUp?(this: PluginMessage, data: EventPayload.systemDidWakeUp): void;
   };
 }

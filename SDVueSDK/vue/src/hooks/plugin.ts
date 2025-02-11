@@ -29,7 +29,22 @@ export const usePluginStore = defineStore('pluginStore', () => {
   const message = ref<StreamDock.Message>();
   const server = new WebSocket('ws://127.0.0.1:' + window.argv[0]);
   server.onopen = () => server.send(JSON.stringify({ event: window.argv[2], uuid: window.argv[1] }));
-  server.onmessage = (e) => (message.value = JSON.parse(e.data));
+  server.onmessage = (e) => (
+    message.value = JSON.parse(e.data)
+  );
+
+  //全局设置数据
+  const globalSettings = ref<any>();
+  //设置全局设置数据
+  const setGlobalSettings = (payload: any) => {
+    server.send(JSON.stringify({ event: 'setGlobalSettings', context: window.argv[1], payload }));
+    globalSettings.value = payload;
+  };
+
+  //获取全局设置数据
+  const getGlobalSettings = () => {
+    server.send(JSON.stringify({ event: 'getGlobalSettings', context: window.argv[1] }));
+  }
 
   // 操作数据存储
   class Actions {
@@ -115,8 +130,11 @@ export const usePluginStore = defineStore('pluginStore', () => {
 
   return {
     message,
+    globalSettings,
     Interval,
     Unterval,
+    setGlobalSettings,
+    getGlobalSettings,
     ActionArr: Actions.list,
     getAction: Actions.getAction,
     addAction: Actions.addAction,
@@ -127,8 +145,13 @@ export const usePluginStore = defineStore('pluginStore', () => {
 
 // !! 请勿更改此处 !!
 type MessageTypes = { plugin: StreamDock.PluginMessage; action: StreamDock.ActionMessage };
+type payload = {
+  settings: any;
+}
 export const useWatchEvent = <T extends keyof MessageTypes>(type: T, MessageEvents: MessageTypes[T]) => {
   const plugin = usePluginStore();
+
+
   if (type === 'plugin') {
     return watch(
       () => plugin.message,
@@ -136,6 +159,9 @@ export const useWatchEvent = <T extends keyof MessageTypes>(type: T, MessageEven
         if (!plugin.message) return;
         if (plugin.message.action) return;
         MessageEvents[plugin.message.event]?.(JSON.parse(JSON.stringify(plugin.message)));
+        if (plugin.message.event === 'didGetGlobalSettings') {
+          plugin.globalSettings = (plugin.message.payload as payload).settings;
+        }
       }
     );
   }

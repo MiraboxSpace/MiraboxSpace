@@ -9,6 +9,8 @@ export default function (name: string) {
     ActionID,
     willAppear({ context }) {
       console.log('创建:', context);
+    },
+    keyUp({ context }){
     }
   });
 }
