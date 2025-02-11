@@ -1,14 +1,18 @@
 <script setup lang="ts">
-  import { usePropertyStore, useWatchEvent, TabView } from '@/hooks/property';
-  import { useI18nStore } from '@/hooks/i18n';
+import { usePropertyStore, useWatchEvent, TabView } from '@/hooks/property';
+import { useI18nStore } from '@/hooks/i18n';
 
-  // 事件侦听器
-  const i18n = useI18nStore();
-  const property = usePropertyStore();
-  useWatchEvent({
-    didReceiveSettings(data) {},
-    sendToPropertyInspector(data) {}
-  });
+// 事件侦听器
+const i18n = useI18nStore();
+const property = usePropertyStore();
+useWatchEvent({
+  didReceiveSettings(data) {
+  },
+  sendToPropertyInspector(data) {
+  },
+  didReceiveGlobalSettings(data) {
+  }
+});
 </script>
 
 <template>

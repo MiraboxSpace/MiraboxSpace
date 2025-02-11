@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 const manifest = {};
-const { PUUID, Actions, i18n, CategoryIcon, Version } = require('../src/manifest.cjs');
+const { PUUID, Actions, i18n, CategoryIcon, Version, APIVersion, Software, ApplicationsToMonitor } = require('../src/manifest.cjs');
 console.log('开始执行自动化构建...');
 
 // 开发环境处理
@@ -20,6 +20,7 @@ manifest.Actions = Actions.map((item) => {
   return item;
 });
 manifest.Version = Version;
+manifest.APIVersion = APIVersion;
 manifest.Name = i18n['en'].Name;
 manifest.Icon = CategoryIcon;
 manifest.CategoryIcon = CategoryIcon;
@@ -28,7 +29,7 @@ manifest.Description = i18n['en'].Description;
 manifest.CodePath = process.argv[2] === 'dev' ? '_.html' : 'index.html';
 
 // 版本固定生成
-manifest.SDKVersion = 1;
+manifest.SDKVersion = 2;
 manifest.Author = 'MiraBox';
 manifest.URL = 'http://video.hotspotek.com.cn/';
 manifest.OS = [
@@ -63,6 +64,8 @@ manifest.Actions = manifest.Actions.map((item) => {
   delete item.i18n;
   return item;
 });
+manifest.Software = Software;
+manifest.ApplicationsToMonitor = ApplicationsToMonitor
 fs.writeJSONSync('./dist/manifest.json', manifest, { spaces: 2, EOL: '\r\n' });
 
 // 复制到插件文件夹

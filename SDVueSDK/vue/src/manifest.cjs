@@ -13,7 +13,8 @@
 
 const Plugin = {
   UUID: 'test',
-  version: '2.0.0',
+  version: '1.0.0',
+  APIVersion: '1.0',
   Icon: 'images/icon.png',
   i18n: {
     en: {
@@ -24,6 +25,13 @@ const Plugin = {
       Name: '键盘操作',
       Description: 'StreamDock 的操作示例列表'
     }
+  },
+  Software: {
+    MinimumVersion: "6.5"
+  },
+  ApplicationsToMonitor: {
+    windows: [
+    ]
   }
 };
 
@@ -58,4 +66,4 @@ const Actions = [
 ];
 
 // !! 请勿修改 !!
-module.exports = { PUUID: Plugin.UUID, Version: Plugin.version, CategoryIcon: Plugin.Icon, i18n: Plugin.i18n, Actions };
+module.exports = { PUUID: Plugin.UUID, ApplicationsToMonitor: Plugin.ApplicationsToMonitor, Software: Plugin.Software, Version: Plugin.version, APIVersion: Plugin.APIVersion, CategoryIcon: Plugin.Icon, i18n: Plugin.i18n, Actions };

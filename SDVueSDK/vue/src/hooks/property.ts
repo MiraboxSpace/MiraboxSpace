@@ -28,7 +28,9 @@ export const usePropertyStore = defineStore('propertyStore', () => {
   const message = ref<StreamDock.Message>();
   const server = new WebSocket('ws://127.0.0.1:' + window.argv[0]);
   server.onopen = () => server.send(JSON.stringify({ event: window.argv[2], uuid: window.argv[1] }));
-  server.onmessage = (e) => (message.value = JSON.parse(e.data));
+  server.onmessage = (e) => {
+    message.value = JSON.parse(e.data)
+  };
 
   // 通知插件
   const sendToPlugin = (payload: any) => {
@@ -67,6 +69,15 @@ export const usePropertyStore = defineStore('propertyStore', () => {
     );
   };
 
+  const getGlobalSettings = () => {
+    server.send(
+      JSON.stringify({
+        event: 'getGlobalSettings',
+        context: window.argv[1],
+      })
+    );
+  };
+
   // 设置图片
   const setImage = (url: string) => {
     if (url.includes('data:')) {
@@ -100,6 +111,7 @@ export const usePropertyStore = defineStore('propertyStore', () => {
     preventWatch,
     settings,
     sendToPlugin,
+    getGlobalSettings,
     setState,
     setTitle,
     setImage,
