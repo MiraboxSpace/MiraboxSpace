@@ -3,6 +3,8 @@
 #include "StreamDockCPPSDK/StreamDockSDK/HSDPlugin.h"
 #include "HSDExampleAction.h"
 #include <set>
+#include <mutex>
+
 
 class HSDExamplePlugin : public HSDPlugin
 {
