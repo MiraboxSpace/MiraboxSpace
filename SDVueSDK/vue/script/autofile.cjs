@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 const manifest = {};
-const { PUUID, Actions, i18n, CategoryIcon, Version, APIVersion, Software, ApplicationsToMonitor } = require('../src/manifest.cjs');
+const { PUUID, Actions, i18n, CategoryIcon, Version, Software, ApplicationsToMonitor } = require('../src/manifest.cjs');
 console.log('开始执行自动化构建...');
 
 // 开发环境处理
@@ -20,7 +20,6 @@ manifest.Actions = Actions.map((item) => {
   return item;
 });
 manifest.Version = Version;
-manifest.APIVersion = APIVersion;
 manifest.Name = i18n['en'].Name;
 manifest.Icon = CategoryIcon;
 manifest.CategoryIcon = CategoryIcon;
