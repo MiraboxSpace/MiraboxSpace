@@ -12,7 +12,7 @@
  */
 
 const Plugin = {
-  UUID: 'test',
+  UUID: 'com.streamdock.demo',
   version: '1.0.0',
   Icon: 'images/icon.png',
   i18n: {
