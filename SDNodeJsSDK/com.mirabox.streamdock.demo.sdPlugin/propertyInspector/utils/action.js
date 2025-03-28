@@ -71,7 +71,9 @@ WebSocket.prototype.saveData = $.debounce(function (payload) {
 // StreamDock 软件入口函数
 async function connectElgatoStreamDeckSocket(port, uuid, event, app, info) {
     info = JSON.parse(info);
-    $uuid = uuid; $action = info.action; $context = info.context;
+    $uuid = uuid; $action = info.action; 
+    $context = uuid;
+    // $context = info.context;
     $websocket = new WebSocket('ws://127.0.0.1:' + port);
     $websocket.onopen = () => $websocket.send(JSON.stringify({ event, uuid }));
 

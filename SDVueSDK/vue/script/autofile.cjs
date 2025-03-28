@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 const manifest = {};
-const { PUUID, Actions, i18n, CategoryIcon, Version, APIVersion, Software, ApplicationsToMonitor } = require('../src/manifest.cjs');
+const { PUUID, Actions, i18n, CategoryIcon, Version, Software, ApplicationsToMonitor } = require('../src/manifest.cjs');
 console.log('开始执行自动化构建...');
 
 // 开发环境处理
@@ -15,12 +15,11 @@ if (process.argv[2] === 'dev') {
 manifest.Actions = Actions.map((item) => {
   item.Name = item.i18n['en'].Name;
   item.Tooltip = item.i18n['en'].Tooltip;
-  item.UUID = `com.mirabox.streamdock.${PUUID}.` + item.UUID;
+  item.UUID = `${PUUID}.` + item.UUID;
   item.PropertyInspectorPath = process.argv[2] === 'dev' ? '_.html' : 'index.html';
   return item;
 });
 manifest.Version = Version;
-manifest.APIVersion = APIVersion;
 manifest.Name = i18n['en'].Name;
 manifest.Icon = CategoryIcon;
 manifest.CategoryIcon = CategoryIcon;
@@ -69,6 +68,6 @@ manifest.ApplicationsToMonitor = ApplicationsToMonitor
 fs.writeJSONSync('./dist/manifest.json', manifest, { spaces: 2, EOL: '\r\n' });
 
 // 复制到插件文件夹
-const PluginName = `com.mirabox.streamdock.${PUUID}.sdPlugin`;
+const PluginName = `${PUUID}.sdPlugin`;
 const PluginPath = path.join(process.env.APPDATA, 'HotSpot/StreamDock/plugins', PluginName);
 fs.removeSync(PluginPath) || fs.mkdirSync(PluginPath) || fs.copySync('./dist', PluginPath);
