@@ -63,7 +63,7 @@ WebSocket.prototype.openUrl = function (url) {
 WebSocket.prototype.saveData = $.debounce(function (payload) {
     this.send(JSON.stringify({
         event: "setSettings",
-        context: $context,
+        context: $uuid,
         payload
     }));
 });

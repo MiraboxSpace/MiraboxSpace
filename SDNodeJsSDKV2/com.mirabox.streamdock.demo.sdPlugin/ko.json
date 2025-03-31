@@ -1,0 +1,11 @@
+{
+  "Name": "demo",
+  "Description": "demo",
+  "Category": "demo",
+  "com.mirabox.streamdock.demo.demo": {
+    "Name": "",
+    "Tooltip": ""
+  },
+  "Localization": {
+  }
+}

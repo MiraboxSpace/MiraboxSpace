@@ -29,7 +29,8 @@
 #define mSDKEventPropertyInspectorDidAppear "propertyInspectorDidAppear"
 #define mSDKEventPropertyInspectorDidDisappear "propertyInspectorDidDisappear"
 #define mSDKEventDialRotate "dialRotate"
-#define mSDKEventDialPress "dialPress"
+#define mSDKEventDialDown "dialDown"
+#define mSDKEventDialUp "dialUp"
 #define mSDKEventTouchTap "touchTap"
 
 //

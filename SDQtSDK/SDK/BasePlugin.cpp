@@ -38,12 +38,21 @@ void BasePlugin::KeyUpForAction(const QString &inAction,
 {
 }
 
-void BasePlugin::DialPressForAction(const QString &inAction,
+void BasePlugin::DialDownForAction(const QString &inAction,
                                     const QString &inContext,
                                     const QJsonObject &inPayload,
                                     const QString &inDeviceID)
 {
 }
+
+
+void BasePlugin::DialUpForAction(const QString &inAction,
+    const QString &inContext,
+    const QJsonObject &inPayload,
+    const QString &inDeviceID)
+{
+}
+
 
 void BasePlugin::DialRotateForAction(const QString &inAction,
                                      const QString &inContext,

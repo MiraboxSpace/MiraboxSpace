@@ -9,37 +9,67 @@ const log = require('log4js').configure({
     }
 }).getLogger();
 
-// 主线程错误处理
+//##################################################
+//##################全局异常捕获#####################
 process.on('uncaughtException', (error) => {
     log.error('Uncaught Exception:', error);
 });
 process.on('unhandledRejection', (reason) => {
     log.error('Unhandled Rejection:', reason);
 });
+//##################################################
+//##################################################
+
 
 // 插件类
 const ws = require('ws');
 class Plugins {
-    static language = process.argv[5];
+    static language = JSON.parse(process.argv[9]).application.language;
+    static globalSettings = {};
+    getGlobalSettingsFlag = true;
     constructor() {
         if (Plugins.instance) {
             return Plugins.instance;
         }
-        this.ws = new ws("ws://127.0.0.1:" + process.argv[2]);
-        this.ws.on('open', () => this.ws.send(JSON.stringify({ uuid: process.argv[3], event: process.argv[4] })));
+        // log.info("process.argv", process.argv);
+        this.ws = new ws("ws://127.0.0.1:" + process.argv[3]);
+        this.ws.on('open', () => this.ws.send(JSON.stringify({ uuid: process.argv[5], event: process.argv[7] })));
         this.ws.on('close', process.exit);
         this.ws.on('message', e => {
+            if (this.getGlobalSettingsFlag) {
+                // 只获取一次
+                this.getGlobalSettingsFlag = false;
+                this.getGlobalSettings();
+            }
             const data = JSON.parse(e.toString());
             const action = data.action?.split('.').pop();
             this[action]?.[data.event]?.(data);
+            if (data.event === 'didReceiveGlobalSettings') {
+                Plugins.globalSettings = data.payload.settings;
+            }
             this[data.event]?.(data);
         });
         Plugins.instance = this;
     }
+
+    setGlobalSettings(payload) {
+        Plugins.globalSettings = payload;
+        this.ws.send(JSON.stringify({
+            event: "setGlobalSettings",
+            context: process.argv[5], payload
+        }));
+    }
+
+    getGlobalSettings() {
+        this.ws.send(JSON.stringify({
+            event: "getGlobalSettings",
+            context: process.argv[5],
+        }));
+    }
     // 设置标题
     setTitle(context, str, row = 0, num = 6) {
-        let newStr = '';
-        if (row) {
+        let newStr = null;
+        if (row && str) {
             let nowRow = 1, strArr = str.split('');
             strArr.forEach((item, index) => {
                 if (nowRow < row && index >= nowRow * num) { nowRow++; newStr += '\n'; }
@@ -51,27 +81,19 @@ class Plugins {
             event: "setTitle",
             context, payload: {
                 target: 0,
-                title: newStr || str
+                title: newStr || str + ''
             }
         }));
     }
     // 设置背景
     setImage(context, url) {
-        const image = new Image();
-        image.src = url; image.onload = () => {
-            const canvas = document.createElement("canvas");
-            canvas.width = image.naturalWidth;
-            canvas.height = image.naturalHeight;
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(image, 0, 0);
-            this.ws.send(JSON.stringify({
-                event: "setImage",
-                context, payload: {
-                    target: 0,
-                    image: canvas.toDataURL("image/png")
-                }
-            }));
-        };
+        this.ws.send(JSON.stringify({
+            event: "setImage",
+            context, payload: {
+                target: 0,
+                image: url
+            }
+        }));
     }
     // 设置状态
     setState(context, state) {
@@ -85,6 +107,22 @@ class Plugins {
         this.ws.send(JSON.stringify({
             event: "setSettings",
             context, payload
+        }));
+    }
+
+    // 在按键上展示警告
+    showAlert(context) {
+        this.ws.send(JSON.stringify({
+            event: "showAlert",
+            context
+        }));
+    }
+
+    // 在按键上展示成功
+    showOk(context) {
+        this.ws.send(JSON.stringify({
+            event: "showOk",
+            context
         }));
     }
     // 发送给属性检测器
@@ -114,6 +152,7 @@ class Actions {
     // 属性检查器显示时
     static currentAction = null;
     static currentContext = null;
+    static actions = {};
     propertyInspectorDidAppear(data) {
         Actions.currentAction = data.action;
         Actions.currentContext = data.context;
@@ -121,9 +160,16 @@ class Actions {
     }
     // 初始化数据
     willAppear(data) {
+        Plugins.globalContext = data.context;
+        Actions.actions[data.context] = data.action
         const { context, payload: { settings } } = data;
         this.data[context] = Object.assign({ ...this.default }, settings);
         this._willAppear?.(data);
+    }
+
+    didReceiveSettings(data) {
+        this.data[data.context] = data.payload.settings;
+        this._didReceiveSettings?.(data);
     }
     // 行动销毁
     willDisappear(data) {
@@ -132,8 +178,36 @@ class Actions {
     }
 }
 
+class EventEmitter {
+    constructor() {
+        this.events = {};
+    }
+
+    // 订阅事件
+    subscribe(event, listener) {
+        if (!this.events[event]) {
+            this.events[event] = [];
+        }
+        this.events[event].push(listener);
+    }
+
+    // 取消订阅
+    unsubscribe(event, listenerToRemove) {
+        if (!this.events[event]) return;
+
+        this.events[event] = this.events[event].filter(listener => listener !== listenerToRemove);
+    }
+
+    // 发布事件
+    emit(event, data) {
+        if (!this.events[event]) return;
+        this.events[event].forEach(listener => listener(data));
+    }
+}
+
 module.exports = {
     log,
     Plugins,
     Actions,
+    EventEmitter
 };

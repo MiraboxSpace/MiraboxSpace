@@ -106,8 +106,11 @@ void HSDConnectionManager::OnMessage(websocketpp::connection_hdl, WebsocketClien
             else if (event == kESDSDKEventSystemDidWakeUp) {
                 mPlugin->SystemDidWakeUp();
             }
-            else if (event == kESDSDKEventDialPress) {
-                mPlugin->DialPressForAction(action, context, payload, deviceID);
+            else if (event == kESDSDKEventDialDown) {
+                mPlugin->DialDownForAction(action, context, payload, deviceID);
+            }
+            else if (event == kESDSDKEventDialUp) {
+                mPlugin->DialUpForAction(action, context, payload, deviceID);
             }
             else if (event == kESDSDKEventDialRotate) {
                 mPlugin->DialRotateForAction(action, context, payload, deviceID);

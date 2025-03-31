@@ -18,58 +18,65 @@ class HSDAction;
  * - create exactly one subclass of `HSDPlugin`, which implements
  *   `GetOrCreateAction()` to retrieve instances of an `HSDAction`.
  */
-class HSDPlugin : public HSDBasePlugin {
- protected:
+class HSDPlugin : public HSDBasePlugin
+{
+protected:
   /** Create or retrieve an HSDAction instance for the given action/context.
    *
    * Return a null/empty shared_ptr if the action is unrecognized.
    */
   virtual std::shared_ptr<HSDAction>
-  GetOrCreateAction(const std::string& action, const std::string& context) = 0;
+  GetOrCreateAction(const std::string &action, const std::string &context) = 0;
 
- public:
+public:
   HSDPlugin();
   virtual ~HSDPlugin();
 
   virtual void KeyDownForAction(
-    const std::string& inAction,
-    const std::string& inContext,
-    const nlohmann::json& inPayload,
-    const std::string& inDeviceID) override;
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDeviceID) override;
 
   virtual void KeyUpForAction(
-    const std::string& inAction,
-    const std::string& inContext,
-    const nlohmann::json& inPayload,
-    const std::string& inDeviceID) override;
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDeviceID) override;
 
-  virtual void DialPressForAction(
-    const std::string& inAction,
-    const std::string& inContext,
-    const nlohmann::json& inPayload,
-    const std::string& inDeviceID) override;
+  virtual void DialDownForAction(
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDeviceID) override;
+
+  virtual void DialUpForAction(
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDeviceID) override;
 
   virtual void DialRotateForAction(
-    const std::string& inAction,
-    const std::string& inContext,
-    const nlohmann::json& inPayload,
-    const std::string& inDeviceID) override;
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDeviceID) override;
 
   virtual void WillAppearForAction(
-    const std::string& inAction,
-    const std::string& inContext,
-    const nlohmann::json& inPayload,
-    const std::string& inDeviceID) override;
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDeviceID) override;
 
   virtual void SendToPlugin(
-    const std::string& inAction,
-    const std::string& inContext,
-    const nlohmann::json& inPayload,
-    const std::string& inDevice) override;
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDevice) override;
 
   virtual void DidReceiveSettings(
-    const std::string& inAction,
-    const std::string& inContext,
-    const nlohmann::json& inPayload,
-    const std::string& inDevice) override;
+      const std::string &inAction,
+      const std::string &inContext,
+      const nlohmann::json &inPayload,
+      const std::string &inDevice) override;
 };

@@ -31,7 +31,12 @@ public:
                                 const QJsonObject &inPayload,
                                 const QString &inDeviceID);
 
-    virtual void DialPressForAction(const QString &inAction,
+    virtual void DialDownForAction(const QString &inAction,
+                                    const QString &inContext,
+                                    const QJsonObject &inPayload,
+                                    const QString &inDeviceID);
+
+    virtual void DialUpForAction(const QString &inAction,
                                     const QString &inContext,
                                     const QJsonObject &inPayload,
                                     const QString &inDeviceID);

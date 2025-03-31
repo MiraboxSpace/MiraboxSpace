@@ -44,7 +44,8 @@ LICENSE file.
 #define kESDSDKEventPropertyInspectorDidDisappear \
   "propertyInspectorDidDisappear"
 #define kESDSDKEventDialRotate "dialRotate"
-#define kESDSDKEventDialPress "dialPress"
+#define kESDSDKEventDialDown "dialDown"
+#define kESDSDKEventDialUp "dialUp"
 #define kESDSDKEventTouchTap "touchTap"
 
 //
