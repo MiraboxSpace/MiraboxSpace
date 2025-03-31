@@ -1,15 +1,18 @@
-/**
- * PropertyInspector 2.5.0 新特性 =>
- * 
- *      1 => 工具与主文件相分离 - 按需引入
- *      2 => $settings - 全局持久化数据代理 ※
- *      3 => 无需关注上下文 - 随时随地与插件通信
- *      4 => 注意事项: 为了避免命名冲突，请勿使用 $ 相关的名称以及JQuery库
- * 
- * ===== CJHONG ========================================== 2023.10.10 =====>
- */
-
 let $websocket, $uuid, $action, $context, $settings, $lang, $FileID = '';
+
+WebSocket.prototype.setGlobalSettings = function(payload) {
+    this.send(JSON.stringify({
+        event: "setGlobalSettings",
+        context: $uuid, payload
+    }));
+}
+
+WebSocket.prototype.getGlobalSettings = function() {
+    this.send(JSON.stringify({
+        event: "getGlobalSettings",
+        context: $uuid,
+    }));
+}
 
 // 与插件通信
 WebSocket.prototype.sendToPlugin = function (payload) {
@@ -20,6 +23,28 @@ WebSocket.prototype.sendToPlugin = function (payload) {
         payload
     }));
 };
+
+//设置标题
+WebSocket.prototype.setTitle = function (str, row = 0, num = 6) {
+    console.log(str);
+    let newStr = '';
+    if (row) {
+        let nowRow = 1, strArr = str.split('');
+        strArr.forEach((item, index) => {
+            if (nowRow < row && index >= nowRow * num) { nowRow++; newStr += '\n'; }
+            if (nowRow <= row && index < nowRow * num) { newStr += item; }
+        });
+        if (strArr.length > row * num) { newStr = newStr.substring(0, newStr.length - 1); newStr += '..'; }
+    }
+    this.send(JSON.stringify({
+        event: "setTitle",
+        context: $uuid,
+        payload: {
+            target: 0,
+            title: newStr || str
+        }
+    }));
+}
 
 // 设置状态
 WebSocket.prototype.setState = function (state) {
@@ -69,6 +94,7 @@ WebSocket.prototype.saveData = $.debounce(function (payload) {
 });
 
 // StreamDock 软件入口函数
+const connectSocket = connectElgatoStreamDeckSocket;
 async function connectElgatoStreamDeckSocket(port, uuid, event, app, info) {
     info = JSON.parse(info);
     $uuid = uuid; $action = info.action; 

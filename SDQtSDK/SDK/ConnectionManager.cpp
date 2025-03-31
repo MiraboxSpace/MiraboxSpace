@@ -230,8 +230,10 @@ void ConnectionManager::OnMessage(const QString &message)
             mPlugin->SendToPlugin(action, context, payload, deviceID);
         } else if (event == mSDKEventSystemDidWakeUp) {
             mPlugin->SystemDidWakeUp();
-        } else if (event == mSDKEventDialPress) {
-            mPlugin->DialPressForAction(action, context, payload, deviceID);
+        } else if (event == mSDKEventDialDown) {
+            mPlugin->DialDownForAction(action, context, payload, deviceID);
+        } else if (event == mSDKEventDialDown) {
+            mPlugin->DialUpForAction(action, context, payload, deviceID);
         } else if (event == mSDKEventDialRotate) {
             mPlugin->DialRotateForAction(action, context, payload, deviceID);
         }

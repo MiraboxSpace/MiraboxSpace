@@ -35,10 +35,15 @@ public:
                                 const QJsonObject &inPayload,
                                 const QString &inDeviceID) override;
 
-    virtual void DialPressForAction(const QString &inAction,
-                                    const QString &inContext,
-                                    const QJsonObject &inPayload,
-                                    const QString &inDeviceID) override;
+    virtual void DialDownForAction(const QString &inAction,
+                                   const QString &inContext,
+                                   const QJsonObject &inPayload,
+                                   const QString &inDeviceID) override;
+                                   
+    virtual void DialUpForAction(const QString &inAction,
+                                   const QString &inContext,
+                                   const QJsonObject &inPayload,
+                                   const QString &inDeviceID) override;
 
     virtual void DialRotateForAction(const QString &inAction,
                                      const QString &inContext,

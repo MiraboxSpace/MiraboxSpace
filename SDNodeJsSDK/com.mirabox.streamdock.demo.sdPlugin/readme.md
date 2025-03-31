@@ -1,259 +1,270 @@
-# Stream Dock 中文文档 V2.8
+# Stream Dock Documentation
 
-仅记录常用简易API，更详细的属性还请阅读官方文档。
+Only common simple APIs are recorded. Please read the official documentation for more detailed properties.
 
-https://sdk.key123.vip/guide/events-received.html
-https://sdk.key123.vip/guide/events-sent.html
+[https://sdk.key123.vip/guide/events-received.html](https://sdk.key123.vip/en/guide/events-received.html)
 
-## 属性检查器HTML模板
+[https://sdk.key123.vip/guide/events-sent.html](https://sdk.key123.vip/en/guide/events-sent.html)
 
+
+## Property inspector HTML template
+
+```html
 <!-- input -->
-<div class="sdpi-item">
-    <div class="sdpi-item-label">xxx</div>
-    <input class="sdpi-item-value"></input>
+<div class="sdpi-item"> 
+  <div class="sdpi-item-label">xxx</div> 
+  <input class="sdpi-item-value"></input>
 </div>
 
 <!-- button -->
-<div class="sdpi-item">
-    <div class="sdpi-item-label">Button</div>
-    <button class="sdpi-item-value">Click Me</button>
+<div class="sdpi-item"> 
+  <div class="sdpi-item-label">Button</div> 
+  <button class="sdpi-item-value">Click Me</button>
 </div>
 
 <!-- textarea -->
-<div type="textarea" class="sdpi-item">
-    <div class="sdpi-item-label">xxx</div>
-    <textarea class="sdpi-item-value" type="textarea"></textarea>
+<div type="textarea" class="sdpi-item"> 
+  <div class="sdpi-item-label">xxx</div> 
+  <textarea class="sdpi-item-value" type="textarea"></textarea>
 </div>
 
 <!-- select -->
-<div type="select" class="sdpi-item">
-    <div class="sdpi-item-label">xxx</div>
-    <select class="sdpi-item-value">
-        <option value="xxx">xxx</option>
-    </select>
+<div type="select" class="sdpi-item"> 
+  <div class="sdpi-item-label">xxx</div> 
+  <select class="sdpi-item-value"> 
+    <option value="xxx">xxx</option> 
+  </select>
 </div>
 
 <!-- checkbox -->
-<div type="checkbox" class="sdpi-item">
-    <div class="sdpi-item-label">Check Me</div>
-    <div class="sdpi-item-value">
-        <span class="sdpi-item-child">
-            <input id="chk1" type="checkbox" value="left">
-            <label for="chk1"><span></span>left</label>
-        </span>
-        <span class="sdpi-item-child">
-            <input id="chk2" type="checkbox" value="right">
-            <label for="chk2"><span></span>right</label>
-        </span>
-    </div>
+<div type="checkbox" class="sdpi-item"> 
+  <div class="sdpi-item-label">Check Me</div> 
+  <div class="sdpi-item-value"> 
+    <span class="sdpi-item-child"> 
+      <input id="chk1" type="checkbox" value="left"> 
+      <label for="chk1"><span></span>left</label> 
+    </span> 
+    <span class="sdpi-item-child"> 
+      <input id="chk2" type="checkbox" value="right"> 
+      <label for="chk2"><span></span>right</label> 
+    </span> 
+  </div>
 </div>
 
 <!-- radio -->
-<div type="radio" class="sdpi-item">
-    <div class="sdpi-item-label">Radio</div>
-    <div class="sdpi-item-value">
-        <span class="sdpi-item-child">
-            <input id="rdio1" type="radio" name="rdio" checked>
-            <label for="rdio1" class="sdpi-item-label"><span></span>on</label>
-        </span>
-        <span class="sdpi-item-child">
-            <input id="rdio2" type="radio" value="off" name="rdio">
-            <label for="rdio2" class="sdpi-item-label"><span></span>off</label>
-        </span>
-        <span class="sdpi-item-child">
-            <input id="rdio3" type="radio" value="mute" name="rdio">
-            <label for="rdio3" class="sdpi-item-label"><span></span>mute</label>
-        </span>
-    </div>
+<div type="radio" class="sdpi-item"> 
+  <div class="sdpi-item-label">Radio</div> 
+  <div class="sdpi-item-value"> 
+    <span class="sdpi-item-child"> 
+      <input id="rdio1" type="radio" name="rdio" checked> 
+      <label for="rdio1" class="sdpi-item-label"><span></span>on</label> 
+    </span> 
+    <span class="sdpi-item-child"> 
+      <input id="rdio2" type="radio" value="off" name="rdio"> 
+      <label for="rdio2" class="sdpi-item-label"><span></span>off</label>
+    </span>
+    <span class="sdpi-item-child">
+      <input id="rdio3" type="radio" value="mute" name="rdio">
+      <label for="rdio3" class="sdpi-item-label"><span></span>mute</label>
+    </span>
+  </div>
 </div>
 
 <!-- range -->
 <div type="range" class="sdpi-item" id="temperatureslider">
-    <div class="sdpi-item-label">xxx</div>
-    <input type="range" class="sdpi-item-value" min="0" max="100" value=37>
+  <div class="sdpi-item-label">xxx</div>
+  <input type="range" class="sdpi-item-value" min="0" max="100" value=37>
 </div>
-
-## 使用Nodejs增强你的插件
-
-有了 app.exe 你可以直接使用此方式运行nodejs文件而无需Nodejs环境。
-
-// 执行 Nodejs （app.exe）脚本源码
-
-``` js
-const { execFile } = require('child_process');
-const port = process.argv[3];
-const uuid = process.argv[5];
-const event = process.argv[7];
-const language = JSON.parse(process.argv[9]).application.language;
-execFile('node', ['./index.js', port, uuid, event, language], error => {
-    if (error) return;
-});
 ```
-## 插件能够触发的事件
+## Events that plugins can trigger
 
-didReceiveSettings 操作持久化数据触发
+didReceiveSettings Operation persistent data trigger
 
+```json
 {
-  "action": "com.example.action1", 
-  "event": "didReceiveSettings", 
-  "context": uniqueValue, 
-  "device": uniqueValue, 
+  "action": "com.example.action1",
+  "event": "didReceiveSettings",
+  "context": uniqueValue,
+  "device": uniqueValue,
   "payload": {
-   "settings": {<json data>},
+    "settings": {<json data>
+    },
     "coordinates": {
-      "column": 3, 
+      "column": 3,
       "row": 1
-    }, 
+    },
     "isInMultiAction": false
   }
 }
+```
 
-keyDown/keyUp/touchTap 按下时/释放按键时/触摸时触发
+keyDown/keyUp/touchTap triggers when pressed/released/touched
 
+```json
 {
-    "action": "com.example.action1",
-    "event": "keyUp",
-    "context": uniqueValue,
-    "device": uniqueValue,
-    "payload": {
-    "settings": {<json data>},
+  "action": "com.example.action1",
+  "event": "keyUp",
+  "context": uniqueValue,
+  "device": uniqueValue,
+  "payload": {
+    "settings": {<json data>
+    },
     "coordinates": {
-        "column": 3, 
-        "row": 1
+      "column": 3,
+      "row": 1
     },
     "state": 0,
     "userDesiredState": 1,
     "isInMultiAction": false
-    }
+  }
 }
+```
 
-willAppear/willDisappear 当一个插件创建/删除时时触发
+willAppear/willDisappear Fired when a plugin is created/deleted
 
+```json
 {
-    "action": "com.example.action1",
-    "event": "willAppear",
-    "context": uniqueValue,
-    "device": uniqueValue,
-    "payload": {
-    "settings": {<json data>},
+  "action": "com.example.action1",
+  "event": "willAppear",
+  "context": uniqueValue,
+  "device": uniqueValue,
+  "payload": {
+    "settings": {<json data>
+    },
     "coordinates": {
-        "column": 3, 
-        "row": 1
+      "column": 3,
+      "row": 1
     },
     "state": 0,
     "isInMultiAction": false
-    }
+  }
 }
+```
 
-titleParametersDidChange 当用户修改标题/标题参数时触发
+titleParametersDidChange Fired when the user changes the title/title parameters
 
+```json
 {
-  "action": "com.example.action1", 
-  "event": "titleParametersDidChange", 
-  "context": "uniqueValue", 
-  "device": "uniqueValue", 
+  "action": "com.example.action1",
+  "event": "titleParametersDidChange",
+  "context": "uniqueValue",
+  "device": "uniqueValue",
   "payload": {
     "coordinates": {
-      "column": 3, 
+      "column": 3,
       "row": 1
-    }, 
-    "settings": {<json data>}, 
-    "state": 0, 
-    "title": "", 
+    },
+    "settings": {<json data>
+    },
+    "state": 0,
+    "title": "",
     "titleParameters": {
-      "fontFamily": "", 
-      "fontSize": 12, 
-      "fontStyle": "", 
-      "fontUnderline": false, 
-      "showTitle": true, 
-      "titleAlignment": "bottom", 
+      "fontFamily": "",
+      "fontSize": 12,
+      "fontStyle": "",
+      "fontUnderline": false,
+      "showTitle": true,
+      "titleAlignment": "bottom",
       "titleColor": "#ffffff"
     }
   }
 }
+```
 
-deviceDidConnect/deviceDidDisconnect 当设备从计算机上插入/拔出时触发
+deviceDidConnect/deviceDidDisconnect Fired when the device is plugged/unplugged from the computer
 
+```json
 {
- "event": "deviceDidConnect",
-    "device": uniqueValue,
-     "deviceInfo": {
-        "name": "Device Name",
-        "type": 0,
-         "size": {
-            "columns": 5,
-            "rows": 3
-        }
-    },
+  "event": "deviceDidConnect",
+  "device": uniqueValue,
+  "deviceInfo": {
+    "name": "Device Name",
+    "type": 0,
+    "size": {
+      "columns": 5,
+      "rows": 3
+    }
+  },
 }
+```
 
-propertyInspectorDidAppear/propertyInspectorDidDisappear 当属性选择器出现/隐藏在用户界面时触发
+propertyInspectorDidAppear/propertyInspectorDidDisappear Fired when the property selector appears/hides in the UI
 
+```json
 {
-  "action": "com.example.action1", 
-  "event": "propertyInspectorDidAppear", 
-  "context": uniqueValue, 
+  "action": "com.example.action1",
+  "event": "propertyInspectorDidAppear",
+  "context": uniqueValue,
   "device": uniqueValue
 }
+```
 
-sendToPlugin 当属性选择器使用 sendToPlugin 事件时触发
+sendToPlugin Fires when the property selector uses the sendToPlugin event
 
+```json
 {
-  "action": "com.example.action1", 
-  "event": "sendToPlugin", 
-  "context": uniqueValue, 
+  "action": "com.example.action1",
+  "event": "sendToPlugin",
+  "context": uniqueValue,
   "payload": {<json data>}
 }
+```
 
-dialRotate 当旋钮旋转
+dialRotate Fires when the knob is rotated
 
+```json
 {
-  "action": "com.example.action1", 
-  "event": "sendToPlugin", 
-  "context": uniqueValue, 
+  "action": "com.example.action1",
+  "event": "sendToPlugin",
+  "context": uniqueValue,
   "payload": {<json data>}
 }
+```
 
-dialDown 当旋钮按下
+dialDown Fires when the knob is pressed
 
+```json
 {
-  "action": "com.example.action1", 
-  "event": "sendToPlugin", 
-  "context": uniqueValue, 
+  "action": "com.example.action1",
+  "event": "sendToPlugin",
+  "context": uniqueValue,
   "payload": {<json data>}
 }
+```
 
-## 属性选择器能够触发的事件
+## Events that can be triggered by attribute selectors
 
-didReceiveSettings 操作持久化数据触发
+didReceiveSettings triggers persistent data
 
-sendToPropertyInspector 当插件使用 sendToPropertyInspector 事件时触发
+sendToPropertyInspector triggers when the plugin uses the sendToPropertyInspector event
 
+```json
 {
-  "action": "com.example.action1", 
-  "event": "sendToPropertyInspector", 
-  "context": uniqueValue, 
+  "action": "com.example.action1",
+  "event": "sendToPropertyInspector",
+  "context": uniqueValue,
   "payload": {<json data>}
 }
+```
 
-## 插件能够发送的事件
+## Events that plugins can send
 
-setSettings 持久保存操作实例的数据
+setSettings Persistently save the data of the action instance
 
-openUrl 在默认浏览器中打开URL
+openUrl Open the URL in the default browser
 
-setTitle 动态更改操作实例的标题
+setTitle Dynamically change the title of the action instance
 
-setImage 动态更改动作实例显示的图像
+setImage Dynamically change the image displayed by the action instance
 
-setState 更改支持多个状态的操作实例的状态
+setState Change the state of an action instance that supports multiple states
 
-sendToPropertyInspector 向属性检查器发送有效负载
+sendToPropertyInspector Send a payload to the property inspector
 
-## 属性选择器能够发送的事件
+## Events that property selectors can send
 
-setSettings 持久保存操作实例的数据
+setSettings Persistently save the data of the action instance
 
-openUrl 在默认浏览器中打开URL
+openUrl Open the URL in the default browser
 
-sendToPlugin 向插件发送有效负载
+sendToPlugin Send a payload to the plugin

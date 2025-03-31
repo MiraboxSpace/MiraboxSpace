@@ -1,0 +1,54 @@
+{
+  "Actions": [
+    {
+      "Icon": "static/App-logo.png",
+      "Name": "demo",
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "static/App-logo.png",
+          "TitleAlignment": "center",
+          "FontSize": "8"
+        }
+      ],
+      "Settings": {
+        "titleFormat": "title-artist",
+        "timeDisplay": "elapsed",
+        "showTitle": true
+      },
+      "Controllers": [],
+      "UserTitleEnabled": true,
+      "SupportedInMultiActions": true,
+      "Tooltip": "demo operation",
+      "UUID": "com.mirabox.streamdock.demo.demo",
+      "PropertyInspectorPath": "propertyInspector/demo/index.html"
+    }
+  ],
+  "SDKVersion": 1,
+  "Author": "MiraBox",
+  "Name": "demo",
+  "Icon": "static/App-logo.png",
+  "CodePathWin": "plugin/index.js",
+  "CodePathMac": "plugin/index.js",
+  "Description": "demo operation",
+  "Category": "demo",
+  "CategoryIcon": "static/App-logo.png",
+  "Version": "1.0.0",
+  "URL": "https://mirabox.key123.vip/home",
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "7"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "3.10.188.226"
+  },
+  "Nodejs": {
+    "Version": "20"
+  }
+}
