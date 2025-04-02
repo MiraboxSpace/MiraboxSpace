@@ -1,33 +1,82 @@
-# Welcome to Mirabox Space
+# StreamDock Plugin SDK
 
-Welcome to the official GitHub repository for [miraboxspace](https://github.com/miraboxspace). Here, you'll find a collection of plugin SDKs, comprehensive developer documentation, and various resources designed to help you integrate and develop on the miraboxspace platform.
+<div align="center">
 
-## Introduction
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Documentation](https://img.shields.io/badge/docs-sdk.key123.vip-brightgreen.svg)](https://sdk.key123.vip/en/)
 
-Miraboxspace is a versatile platform aimed at providing developers with the tools and resources necessary to build, integrate, and optimize their applications. Our goal is to foster a vibrant community where developers can collaborate, innovate, and create exceptional solutions.
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
-## Contributing
+</div>
 
-We welcome contributions from the community! If you'd like to contribute, please follow these steps:
+## 🚀 Introduction
 
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Commit your changes and push the branch to your fork.
-4. Open a pull request and describe your changes.
+Welcome to the official StreamDock Plugin SDK repository! Here you'll find various programming language templates and a complete development toolkit for creating StreamDock plugins. With our SDK, developers can easily create and publish their own StreamDock plugins.
 
-## Documentation
+## ✨ Key Features
 
-For detailed guides and in-depth documentation, please refer to our comprehensive [documentation](https://sdk.key123.vip/en/).
+- 📦 Multi-language Development Templates
+- 🛠️ Complete Plugin Development SDK
+- 📚 Comprehensive Documentation
+- 🔌 Streamlined Plugin Publishing Process
 
-## License
+## 📂 Development Templates
+
+This repository includes plugin development templates for:
+
+- JavaScript
+- Vue
+- Node.js
+- C++
+- Qt
+
+## 🔨 Quick Start
+
+1. Choose a template in your preferred programming language
+2. Clone the repository and install dependencies
+3. Develop your plugin following the template
+4. Test your plugin
+5. Publish to [Space Platform](https://space.key123.vip/)
+
+## 📚 Documentation
+
+Visit our [Official Documentation](https://sdk.key123.vip/en/) for:
+
+- Detailed Development Guides
+- API References
+- Best Practice Examples
+- FAQ
+
+## 🎯 Plugin Publishing
+
+Completed plugins can be published to the [Space Platform](https://space.key123.vip/) to share your creation with more users.
+
+## 🤝 Contributing
+
+We welcome community contributions! If you want to contribute:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact
+## 📮 Contact Us
 
-If you have any questions, feel free to reach out to us:
+- 📧 Email: service@key123.vip
+- 💡 Issues: [GitHub Issues](https://github.com/MiraboxSpace/StreamDock-Plugin-SDK/issues)
+- 🌐 Documentation: [https://sdk.key123.vip](https://sdk.key123.vip/en/)
+- 🏪 Plugin Market: [Space Platform](https://space.key123.vip/)
+- 💬 Discord：[Join our community](https://discord.gg/WvCkKRGavX)
 
-- Email: service@key123.vip
-- GitHub Issues: [Submit an issue](https://github.com/miraboxspace/repo-name/issues)
+---
 
-Thank you for being a part of the Mirabox Space community!
+<div align="center">
+
+Thank you for using StreamDock Plugin SDK! If you find this project helpful, please consider giving us a ⭐️
+
+</div>
