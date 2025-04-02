@@ -1,0 +1,61 @@
+**/.vscode/
+**/.vs/
+
+# Package files
+**/package-lock.json
+
+# Non-npm lockfiles
+**/pnpm-lock.yaml
+**/yarn.lock
+**/deno.lock
+**/bun.lockb
+**/bun.lock
+
+# Dependencies
+**/node_modules/
+
+# Build outputs
+**/build/
+**/dist/
+**/*.build/
+**/out/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+**/.idea/
+**/*.swp
+**/*.swo
+**/*.swn
+**/.history/
+*.sublime-workspace
+*.sublime-project
+
+# Logs and databases
+**/logs
+**/*.log
+**/*.sqlite
+**/*.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+# Testing
+**/coverage/
+**/.nyc_output/
+
+# Temporary files
+**/tmp/
+**/temp/
