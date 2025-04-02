@@ -71,7 +71,7 @@ This project is licensed under the [MIT License](LICENSE).
 - 💡 Issues: [GitHub Issues](https://github.com/MiraboxSpace/StreamDock-Plugin-SDK/issues)
 - 🌐 Documentation: [https://sdk.key123.vip](https://sdk.key123.vip/en/)
 - 🏪 Plugin Market: [Space Platform](https://space.key123.vip/)
-- - 💬 Discord：[Join our community](https://discord.gg/WvCkKRGavX)
+- 💬 Discord：[Join our community](https://discord.gg/WvCkKRGavX)
 
 ---
 
