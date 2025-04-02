@@ -1,0 +1,48 @@
+{
+  "Actions": [
+    {
+      "Icon": "static/CH.png",
+      "Name": "行动名称",
+      "States": [
+        {
+          "FontSize": "10",
+          "TitleAlignment": "bottom",
+          "Image": "static/default.jpg"
+        }
+      ],
+      "Controllers": [
+        "Keypad",
+        "Information",
+        "Knob"
+      ],
+      "UserTitleEnabled": true,
+      "SupportedInMultiActions": false,
+      "Tooltip": "行动说明",
+      "UUID": "com.hotspot.streamdock.demo.action1",
+      "PropertyInspectorPath": "propertyInspector/action1/index.html"
+    }
+  ],
+  "SDKVersion": 1,
+  "Author": "Mirabox",
+  "Name": "插件名称",
+  "Icon": "static/CH.png",
+  "CodePath": "plugin/app.exe",
+  "Description": "插件描述",
+  "Category": "插件名称",
+  "CategoryIcon": "static/CH.png",
+  "Version": "1.0.0",
+  "URL": "http://video.hotspotek.com.cn/",
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "7"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "2.9"
+  }
+}

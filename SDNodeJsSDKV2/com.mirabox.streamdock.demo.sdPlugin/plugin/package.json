@@ -1,0 +1,16 @@
+{
+  "name": "nodeplugin",
+  "version": "1.0.0",
+  "author": "mirabox",
+  "main": "index.js",
+  "description": "以子进程的方式运行nodejs代码",
+  "scripts": {
+    "build": "ncc build index.js -m -o ./build && node autofile.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^11.3.0",
+    "log4js": "^6.9.1",
+    "ws": "^8.14.2"
+  }
+}

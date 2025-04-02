@@ -1,0 +1,23 @@
+{
+  "Name": "demo",
+  "Description": "demo",
+  "Category": "demo",
+  "com.mirabox.streamdock.demo.demo": {
+    "Name": "",
+    "Tooltip": ""
+  },
+  "Localization": {
+    "Playback Device": "Playback Device",
+    "Loading...": "Loading...",
+    "Time Display": "Time Display",
+    "Time Remaining": "Time Remaining",
+    "Time Elapsed": "Time Elapsed",
+    "Show Title": "Show Title",
+    "Display Format": "Display Format",
+    "Title": "Title",
+    "Title - Artist": "Title - Artist",
+    "Artist": "Artist",
+    "Artist - Title": "Artist - Title",
+    "Logout": "Logout"
+  }
+}

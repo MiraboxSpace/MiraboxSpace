@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "types": ["node"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": ["vite.config.ts", "src/manifest.cjs", "script/*.cjs"]
+}

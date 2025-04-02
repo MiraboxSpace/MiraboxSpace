@@ -1,0 +1,4 @@
+plugin/node_modules/**
+plugin/log/
+plugin/build/
+plugin/data/
