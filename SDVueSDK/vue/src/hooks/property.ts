@@ -60,7 +60,7 @@ export const usePropertyStore = defineStore('propertyStore', () => {
     server.send(
       JSON.stringify({
         event: 'setTitle',
-        context: window.argv[1],
+        context: window.argv[4].context,
         payload: {
           title,
           target: 0

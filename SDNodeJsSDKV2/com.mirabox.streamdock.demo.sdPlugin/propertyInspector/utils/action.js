@@ -38,7 +38,7 @@ WebSocket.prototype.setTitle = function (str, row = 0, num = 6) {
     }
     this.send(JSON.stringify({
         event: "setTitle",
-        context: $uuid,
+        context: $context,
         payload: {
             target: 0,
             title: newStr || str
